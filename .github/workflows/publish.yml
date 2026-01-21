@@ -1,0 +1,58 @@
+name: Publish to Open VSX & Create Release on Push
+
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Compile extension
+        run: npm run compile
+
+      - name: Package VSIX
+        id: package
+        run: |
+          npx vsce package --out rvmat-tools-${{ github.sha }}.vsix
+          echo "vsix_file=rvmat-tools-${{ github.sha }}.vsix" >> $GITHUB_OUTPUT
+
+      - name: Publish to Open VSX
+        env:
+          OVSX_PAT: ${{ secrets.OPEN_VSX_TOKEN }}
+        run: npx ovsx publish ${{ steps.package.outputs.vsix_file }} -p $OVSX_PAT
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ github.run_number }}-${{ github.sha }}
+          name: Auto-release ${{ github.sha }}
+          body: |
+            Automatic build from commit ${{ github.sha }}
+            - Branch: ${{ github.ref_name }}
+            - Triggered by push
+          files: ${{ steps.package.outputs.vsix_file }}
+          generate_release_notes: false
+          draft: false
+          prerelease: true
