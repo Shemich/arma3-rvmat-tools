@@ -23,10 +23,10 @@
 3. Install
 
 Direct link:  
-https://open-vsx.org/extension/shemich/rvmat-tools
+https://open-vsx.org/extension/shemich-arma/rvmat-tools
 
 Alternative (manual install):  
-Download the latest .vsix from [GitHub Releases](https://github.com/shemich/rvmat-tools/releases) → Extensions → … → Install from VSIX...
+Download the latest .vsix from [GitHub Releases](https://github.com/Shemich/arma3-rvmat-tools/releases) → Extensions → … → Install from VSIX...
 
 ## Commands
 
@@ -57,7 +57,7 @@ Download the latest .vsix from [GitHub Releases](https://github.com/shemich/rvma
 3. Compile: `npm run compile`
 4. Press F5 → opens a new VS Code window with the extension loaded
 
-Pull requests welcome! Report issues or suggest features in the [Issues tab](https://github.com/shemich/rvmat-tools/issues).
+Pull requests welcome! Report issues or suggest features in the [Issues tab](https://github.com/Shemich/arma3-rvmat-tools/issues).
 
 ## Changelog
 
