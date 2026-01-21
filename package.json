@@ -3,7 +3,7 @@
     "displayName": "RVMAT Tools",
     "description": "Syntax highlighting, linting, autocompletion, texture validation and TexView integration for Arma 3 .rvmat material files",
     "publisher": "shemich-arma",
-    "version": "0.1.6",
+    "version": "0.1.7",
     "icon": "logo.png",
     "engines": {
         "vscode": "^1.108.1"
@@ -105,10 +105,10 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/arma-community/arma3-rvmat-syntax.git"
+        "url": "https://github.com/Shemich/arma3-rvmat-tools.git"
     },
     "bugs": {
-        "url": "https://github.com/arma-community/arma3-rvmat-syntax/issues"
+        "url": "https://github.com/Shemich/arma3-rvmat-tools/issues"
     },
     "devDependencies": {
         "@eslint/js": "^9.39.2",
