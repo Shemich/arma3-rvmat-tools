@@ -2,8 +2,8 @@
 
 **Syntax highlighting • Linting • Autocompletion • TexView integration** for Arma 3 .rvmat material files.
 
-[![Version](https://img.shields.io/open-vsx/v/shemich/rvmat-tools)](https://open-vsx.org/extension/shemich-arma/rvmat-tools)
-[![Installs](https://img.shields.io/open-vsx/dt/shemich/rvmat-tools)](https://open-vsx.org/extension/shemich-arma/rvmat-tools)
+[![Version](https://img.shields.io/open-vsx/v/shemich-arma/rvmat-tools)](https://open-vsx.org/extension/shemich-arma/rvmat-tools)
+[![Installs](https://img.shields.io/open-vsx/dt/shemich-arma/rvmat-tools)](https://open-vsx.org/extension/shemich-arma/rvmat-tools)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ## Features
