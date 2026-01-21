@@ -1,0 +1,22 @@
+# Set the default behavior to automatically normalize line endings for text files
+* text=auto
+
+# Force the line ending for specific text files
+*.js text eol=crlf
+*.json text eol=crlf
+*.md text eol=crlf
+*.rvmat text eol=crlf
+*.ts text eol=crlf
+*.html text eol=crlf
+*.css text eol=crlf
+*.xml text eol=crlf
+*.yaml text eol=crlf
+*.yml text eol=crlf
+
+# Binary files should not be normalized
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.svg binary

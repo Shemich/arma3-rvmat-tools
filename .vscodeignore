@@ -1,0 +1,32 @@
+# Dependencies
+node_modules
+
+# Build outputs
+out/**/*.map
+dist/
+
+# Logs
+*.log
+
+# Documentation source files that are not needed in the extension
+docs/
+
+# Example files that are only for testing
+rvmat_examples/
+test.rvmat
+
+# Git files
+.git/
+.gitignore
+.gitattributes
+
+# Local VS Code settings
+.vscode/
+
+node_modules
+out/**/*.map
+src
+tsconfig.json
+.eslintrc*
+.vscode
+.gitignore

@@ -1,0 +1,20 @@
+ambient[]= {0.7,0.7,0.7,1};
+specular[] = {1,1,1,1};
+specularPower = 50;
+PixelShaderID = "NormalMapSpecularDIMap";
+VertexShaderID = "NormalMap";
+class Stage0
+{
+	texture="shc\shc_ro2_objects\Props_Street\data\GE_Pavements1_co.paa";
+	uvSource="tex";
+};
+class Stage1
+{
+	texture="shc\shc_ro2_objects\Props_Street\data\GE_Pavements1_nohq.paa";
+	uvSource="tex";
+};
+class Stage2
+{
+	texture="shc\shc_ro2_objects\Props_Street\data\GE_Pavements1_DTSMDI.paa";
+	uvSource="tex";
+};

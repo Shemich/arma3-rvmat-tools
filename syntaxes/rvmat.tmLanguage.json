@@ -1,0 +1,190 @@
+{
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "rvmat",
+    "scopeName": "source.rvmat",
+    "patterns": [
+        { "include": "#comments" },
+        { "include": "#preprocessor" },
+        { "include": "#keywords" },
+        { "include": "#classes" },
+        { "include": "#properties" },
+        { "include": "#strings" },
+        { "include": "#numbers" },
+        { "include": "#arrays" },
+        { "include": "#operators" },
+        { "include": "#functions" }
+    ],
+    "repository": {
+        "comments": {
+            "patterns": [
+                {
+                    "name": "comment.line.double-slash.rvmat",
+                    "match": "//.*$"
+                },
+                {
+                    "name": "comment.block.rvmat",
+                    "begin": "/\\*",
+                    "end": "\\*/"
+                }
+            ]
+        },
+        "preprocessor": {
+            "patterns": [
+                {
+                    "name": "keyword.control.directive.rvmat",
+                    "match": "\\b(#include|#define|#ifdef|#ifndef|#endif|#undef|#pragma)\\b"
+                }
+            ]
+        },
+        "keywords": {
+            "patterns": [
+                {
+                    "name": "keyword.control.rvmat",
+                    "match": "\\b(class|enum|delete)\\b"
+                }
+            ]
+        },
+        "classes": {
+            "patterns": [
+                {
+                    "name": "meta.class.rvmat",
+                    "begin": "\\b(class)\\s+([\\w:]+)",
+                    "beginCaptures": {
+                        "1": { "name": "storage.type.class.rvmat keyword.declaration.class.rvmat" },
+                        "2": { "name": "entity.name.class.rvmat" }
+                    },
+                    "end": "(?<=\\})",
+                    "patterns": [
+                        {
+                            "name": "punctuation.section.block.begin.rvmat",
+                            "match": "\\{"
+                        },
+                        {
+                            "name": "punctuation.section.block.end.rvmat",
+                            "match": "\\}"
+                        },
+                        { "include": "$self" }
+                    ]
+                }
+            ]
+        },
+        "properties": {
+            "patterns": [
+                {
+                    "name": "variable.other.property.rvmat",
+                    "match": "\\b(ambient|diffuse|forcedDiffuse|forcedDiffuseAlpha|emissive|emmisive|specular|specularPower|PixelShaderID|VertexShaderID|renderFlags|uvSource|texture|mainLight|useAsInput|alpha|blendFunc|depthBias|depthFunc|depthMask|dstBlend|gamma|hdr|interval|lighting|material|maxDrawDist|minDrawDist|pixelShader|screenSpaceReflection|shadow|shift|shininess|srcBlend|srgb|startPos|transparency|uav|uvTransform|vertexShader|workflow|albedo|normal|metallic|roughness|ao|height|mask|detail|fresnelReflection|reflection|uvSet|texGen|aside|up|dir|pos|Filter|fogMode|useWorldEnvMap)\\b"
+                },
+                {
+                    "name": "variable.other.stage-property.rvmat",
+                    "match": "\\b(Stage\\d+|StageTI|TexGen\\d+)\\b"
+                },
+                {
+                    "name": "support.type.shader.rvmat",
+                    "match": "\\b(Super|SuperExt|Multi|NormalMap|NormalMapSpecularDIMap|Normal|NormalDXTA|Detail|Interpolation|Water|WaterSimple|White|WhiteAlpha|AlphaShadow|AlphaNoShadow|Dummy0|DetailMacroAS|NormalMapMacroAS|NormalMapDiffuseMacroAS|NormalMapSpecularMap|NormalMapDetailSpecularMap|NormalMapMacroASSpecularMap|NormalMapDetailMacroASSpecularMap|NormalMapSpecularDIMap|NormalMapDetailSpecularDIMap|NormalMapMacroASSpecularDIMap|NormalMapDetailMacroASSpecularDIMap|Terrain\\d+|TerrainSimple\\d+|Glass|NoDraw|Basic|BasicAS|NormalMapAS|NormalMapThrough|NormalMapThroughSimple|NormalMapSpecularThrough|NormalMapSpecularThroughSimple|NormalMapThroughNoFade|Tree|TreeNoFade|TreePRT)\\b"
+                },
+                {
+                    "name": "support.constant.renderflag.rvmat",
+                    "match": "\\b(NoZWrite|NoColorWrite|NoAlphaWrite|AddBlend|LandShadow|AlphaTest32|AlphaTest64|AlphaTest128|Road|NoTiWrite|NoReceiveShadow|NoLODBlend|Dummy0)\\b"
+                },
+                {
+                    "name": "support.constant.lightmode.rvmat",
+                    "match": "\\b(None|Sun|Sky|Horizon|Stars|SunObject|SunHaloObject|MoonObject|MoonHaloObject)\\b"
+                },
+                {
+                    "name": "support.constant.fogmode.rvmat",
+                    "match": "\\b(none|fog|alpha|fogAlpha|fogSky)\\b"
+                },
+                {
+                    "name": "support.constant.uvsource.rvmat",
+                    "match": "\\b(none|tex|tex1|pos|norm|worlPos|worldNorm|texShoreAnim|texCollimator|texCollimatorInv)\\b"
+                }
+            ]
+        },
+        "functions": {
+            "patterns": [
+                {
+                    "name": "support.function.procedural-texture.rvmat",
+                    "match": "#\\((argb|ai),\\d+,\\d+,\\d+\\)(fresnel|color)\\([^)]*\\)"
+                }
+            ]
+        },
+        "strings": {
+            "patterns": [
+                {
+                    "name": "string.quoted.double.rvmat",
+                    "begin": "\"",
+                    "end": "\"",
+                    "patterns": [
+                        { "match": "\\\\.", "name": "constant.character.escape.rvmat" },
+                        { "include": "#functions" }
+                    ]
+                }
+            ]
+        },
+        "numbers": {
+            "patterns": [
+                {
+                    "name": "constant.numeric.rvmat",
+                    "match": "\\b(-?(?:\\d+\\.?\\d*|\\.\\d+)(?:[eE][+-]?\\d+)?)\\b"
+                }
+            ]
+        },
+        "arrays": {
+            "patterns": [
+                {
+                    "name": "meta.array.square-brackets.rvmat",
+                    "begin": "\\[",
+                    "beginCaptures": {
+                        "0": { "name": "punctuation.definition.array.begin.rvmat" }
+                    },
+                    "end": "\\]",
+                    "endCaptures": {
+                        "0": { "name": "punctuation.definition.array.end.rvmat" }
+                    },
+                    "patterns": [
+                        { "include": "#numbers" },
+                        { "include": "#arrays" },
+                        { "include": "#operators" }
+                    ]
+                },
+                {
+                    "name": "meta.array.curly-braces.rvmat",
+                    "begin": "\\{",
+                    "beginCaptures": {
+                        "0": { "name": "punctuation.definition.array.begin.rvmat" }
+                    },
+                    "end": "\\}",
+                    "endCaptures": {
+                        "0": { "name": "punctuation.definition.array.end.rvmat" }
+                    },
+                    "patterns": [
+                        { "include": "#numbers" },
+                        { "include": "#arrays" },
+                        { "include": "#operators" },
+                        { "include": "#strings" }
+                    ]
+                }
+            ]
+        },
+        "operators": {
+            "patterns": [
+                {
+                    "name": "keyword.operator.assignment.rvmat",
+                    "match": "="
+                },
+                {
+                    "name": "punctuation.terminator.statement.rvmat",
+                    "match": ";"
+                },
+                {
+                    "name": "punctuation.separator.continuation.rvmat",
+                    "match": ","
+                },
+                {
+                    "name": "punctuation.separator.key-value.rvmat",
+                    "match": ":"
+                }
+            ]
+        }
+    }
+}

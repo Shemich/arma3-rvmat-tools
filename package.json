@@ -1,0 +1,128 @@
+{
+    "name": "rvmat-tools",
+    "displayName": "RVMAT Tools",
+    "description": "Syntax highlighting, linting, autocompletion, texture validation and TexView integration for Arma 3 .rvmat material files",
+    "publisher": "shemich-arma",
+    "version": "0.1.2",
+    "icon": "logo.png",
+    "engines": {
+        "vscode": "^1.108.1"
+    },
+    "categories": [
+        "Programming Languages",
+        "Linters"
+    ],
+    "activationEvents": [
+        "onLanguage:rvmat"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+        "languages": [
+            {
+                "id": "rvmat",
+                "aliases": [
+                    "RVMAT",
+                    "arma3-material",
+                    "rvmat"
+                ],
+                "extensions": [
+                    ".rvmat"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "rvmat",
+                "scopeName": "source.rvmat",
+                "path": "./syntaxes/rvmat.tmLanguage.json"
+            }
+        ],
+        "themes": [
+            {
+                "label": "RVMAT Dark Theme",
+                "uiTheme": "vs-dark",
+                "path": "./themes/rvmat-color-theme.json"
+            },
+            {
+                "label": "RVMAT Light Theme",
+                "uiTheme": "vs",
+                "path": "./themes/rvmat-light-color-theme.json"
+            }
+        ],
+        "commands": [
+            {
+                "command": "rvmat.openTextureWithTexView",
+                "title": "Open Texture with TexView",
+                "category": "RVMAT"
+            },
+            {
+                "command": "rvmat.openTextureAtCursorWithTexView",
+                "title": "Open Texture at Cursor with TexView",
+                "category": "RVMAT"
+            },
+            {
+                "command": "rvmat.validateCurrentFile",
+                "title": "Validate Current RVMAT File",
+                "category": "RVMAT"
+            }
+        ],
+        "menus": {
+            "editor/context": [
+                {
+                    "command": "rvmat.openTextureAtCursorWithTexView",
+                    "when": "resourceExtname == '.rvmat'",
+                    "group": "navigation"
+                }
+            ],
+            "commandPalette": [
+                {
+                    "command": "rvmat.validateCurrentFile",
+                    "when": "resourceExtname == '.rvmat'"
+                }
+            ]
+        },
+        "configuration": {
+            "title": "RVMAT Linter",
+            "properties": {
+                "rvmat-linter.texViewPath": {
+                    "type": "string",
+                    "default": "D:\\\\SteamLibrary\\\\steamapps\\\\common\\\\Arma 3 Tools\\\\TexView2\\\\TexView.exe",
+                    "description": "Path to the TexView executable for opening textures"
+                },
+                "rvmat-linter.checkTextures": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Enable texture file existence checking"
+                },
+                "rvmat-linter.pDriveRoot": {
+                    "type": "string",
+                    "default": "P:\\\\",
+                    "description": "Root path for P: drive when resolving texture paths"
+                }
+            }
+        }
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/arma-community/arma3-rvmat-syntax.git"
+    },
+    "bugs": {
+        "url": "https://github.com/arma-community/arma3-rvmat-syntax/issues"
+    },
+    "devDependencies": {
+        "@eslint/js": "^9.39.2",
+        "@types/node": "^18.0.0",
+        "@types/vscode": "^1.108.1",
+        "eslint": "^9.39.2",
+        "globals": "^17.0.0",
+        "prettier": "3.8.0",
+        "typescript-eslint": "^8.53.1"
+    },
+    "scripts": {
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "vscode:prepublish": "npm run compile"
+    },
+    "license": "MIT"
+}

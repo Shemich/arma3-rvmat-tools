@@ -1,0 +1,47 @@
+Shader Name	Description
+Basic	N/A
+NormalMap	normal map
+NormalMapDiffuse	normal map + detail map
+Grass	
+Dummy1	
+Dummy2	
+ShadowVolume	shadow volumes
+Water	per-vertex water animation
+WaterSimple	per-vertex water animation (without foam)
+Sprite	particle effects
+Point	anti-aliased points
+NormalMapThrough	normal map - tree shader
+Dummy3	
+Terrain	one pass terrain, no alpha mask - based on VSNormalMapDiffuse
+BasicAS	ambient shadow
+NormalMapAS	normal map with ambient shadow
+NormalMapDiffuseAS	diffuse normal map with ambient shadow
+Glass /*glass shader*/ \
+
+NormalMapSpecularThrough	normal map with specular - tree shader
+NormalMapThroughNoFade	normal map - tree shader - without face fading
+NormalMapSpecularThroughNoFade	normal map with specular - tree shader - without face fading
+Shore	sea shore - similar to Terrain
+TerrainGrass	grass layer - similar to Terrain
+Super	Super shader - expensive shader containing all common features
+Multi	Multi shader - shader with multiple layers suitable for huge surfaces like houses
+Tree	Tree shader - cheap shader designed for trees and bushes
+TreeNoFade	Tree shader - cheap shader designed for trees and bushes - without face fading
+TreePRT	Tree shader - very cheap shader designed for trees and bushes
+TreePRTNoFade	Tree shader - very cheap shader designed for trees and bushes - without face fading
+Skin	Human skin - derived from Super shader
+CalmWater	calm water surface - special shader
+TreeAdv	advanced tree crown shader VSTreeAdv
+TreeAdvTrunk	advanced tree crown shader VSTreeAdvTrunk
+VolCloud	volumetric clouds
+Road	roads
+UnderwaterOcclusion	underwater occlusion object vertex shader
+SimulWeatherClouds	simul weather clouds
+SimulWeatherCloudsCPU	simul weather clouds with CPU distance fading
+SpriteOnSurface	sprite on surface
+TreeAdvModNormals	advanced tree crown shader with modified vertex normals
+Refract	vertex shader for refractions - _ARMA3_REFRACTION
+SimulWeatherCloudsGS	simul weather clouds with geom shader
+BasicFade	basic with face fading (based on the angle with camera direction
+Star	Similar to Point but only for drawing stars
+TreeAdvNoFade	advanced tree crown shader - no face fading

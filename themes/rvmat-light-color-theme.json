@@ -1,0 +1,158 @@
+{
+  "name": "RVMAT Light Color Theme",
+  "type": "light",
+  "colors": {
+    "editor.background": "#FFFFFF",
+    "editor.foreground": "#333333"
+  },
+  "tokenColors": [
+    {
+      "name": "Comments",
+      "scope": [
+        "comment.line.double-slash.rvmat",
+        "comment.block.rvmat"
+      ],
+      "settings": {
+        "foreground": "#098309",
+        "fontStyle": "italic"
+      }
+    },
+    {
+      "name": "Keywords",
+      "scope": [
+        "keyword.control.rvmat",
+        "storage.type.class.rvmat",
+        "keyword.declaration.class.rvmat"
+      ],
+      "settings": {
+        "foreground": "#0000FF",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "name": "Preprocessor Directives",
+      "scope": [
+        "keyword.control.directive.rvmat"
+      ],
+      "settings": {
+        "foreground": "#A000A0",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "name": "Properties",
+      "scope": [
+        "variable.other.property.rvmat"
+      ],
+      "settings": {
+        "foreground": "#007070"
+      }
+    },
+    {
+      "name": "Stage Properties",
+      "scope": [
+        "variable.other.stage-property.rvmat"
+      ],
+      "settings": {
+        "foreground": "#994D00",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "name": "Shader Types",
+      "scope": [
+        "support.type.shader.rvmat"
+      ],
+      "settings": {
+        "foreground": "#800080",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "name": "Constants",
+      "scope": [
+        "support.constant.renderflag.rvmat",
+        "support.constant.lightmode.rvmat",
+        "support.constant.fogmode.rvmat",
+        "support.constant.uvsource.rvmat"
+      ],
+      "settings": {
+        "foreground": "#A000A0"
+      }
+    },
+    {
+      "name": "Strings",
+      "scope": [
+        "string.quoted.double.rvmat"
+      ],
+      "settings": {
+        "foreground": "#994D00"
+      }
+    },
+    {
+      "name": "Numbers",
+      "scope": [
+        "constant.numeric.rvmat"
+      ],
+      "settings": {
+        "foreground": "#09885A"
+      }
+    },
+    {
+      "name": "Arrays",
+      "scope": [
+        "meta.array.rvmat",
+        "meta.array.square-brackets.rvmat",
+        "meta.array.curly-braces.rvmat",
+        "punctuation.definition.array.begin.rvmat",
+        "punctuation.definition.array.end.rvmat"
+      ],
+      "settings": {
+        "foreground": "#333333"
+      }
+    },
+    {
+      "name": "Operators",
+      "scope": [
+        "keyword.operator.assignment.rvmat",
+        "punctuation.terminator.statement.rvmat",
+        "punctuation.separator.continuation.rvmat",
+        "punctuation.separator.key-value.rvmat"
+      ],
+      "settings": {
+        "foreground": "#333333",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "name": "Procedural Textures",
+      "scope": [
+        "support.function.procedural-texture.rvmat"
+      ],
+      "settings": {
+        "foreground": "#D7823D"
+      }
+    },
+    {
+      "name": "Classes",
+      "scope": [
+        "entity.name.class.rvmat",
+        "meta.class.rvmat"
+      ],
+      "settings": {
+        "foreground": "#0F878F",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "name": "Braces and Brackets",
+      "scope": [
+        "punctuation.section.block.begin.rvmat",
+        "punctuation.section.block.end.rvmat"
+      ],
+      "settings": {
+        "foreground": "#666666"
+      }
+    }
+  ]
+}
