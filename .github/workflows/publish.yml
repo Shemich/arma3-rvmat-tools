@@ -1,4 +1,4 @@
-name: Publish to Open VSX & Create Release on Push
+name: Publish to Open VSX & Create Release
 
 on:
   push:
@@ -18,7 +18,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 0 
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -32,11 +32,27 @@ jobs:
       - name: Compile extension
         run: npm run compile
 
+      - name: Get version from package.json
+        id: get-version
+        run: echo "VERSION=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
+
+      - name: Determine release type
+        id: release-type
+        run: |
+          if [[ "${{ github.ref }}" == refs/tags/* ]]; then
+            echo "IS_TAG=true" >> $GITHUB_OUTPUT
+            echo "VERSION_SUFFIX=" >> $GITHUB_OUTPUT
+          else
+            echo "IS_TAG=false" >> $GITHUB_OUTPUT
+            echo "VERSION_SUFFIX=-prerelease-${{ github.sha }}" >> $GITHUB_OUTPUT
+          fi
+
       - name: Package VSIX
         id: package
         run: |
-          npx vsce package --out rvmat-tools-${{ github.sha }}.vsix
-          echo "vsix_file=rvmat-tools-${{ github.sha }}.vsix" >> $GITHUB_OUTPUT
+          OUTPUT_FILE="rvmat-tools-${{ steps.get-version.outputs.VERSION }}${{ steps.release-type.outputs.VERSION_SUFFIX }}.vsix"
+          npx vsce package --out "$OUTPUT_FILE"
+          echo "vsix_file=$OUTPUT_FILE" >> $GITHUB_OUTPUT
 
       - name: Publish to Open VSX
         env:
@@ -46,13 +62,19 @@ jobs:
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v${{ github.run_number }}-${{ github.sha }}
-          name: Auto-release ${{ github.sha }}
+          tag_name: ${{ github.ref_type == 'tag' && github.ref_name || format('v{0}{1}', steps.get-version.outputs.VERSION, steps.release-type.outputs.VERSION_SUFFIX) }}
+          name: >
+            ${{ steps.release-type.outputs.IS_TAG == 'true' && format('RVMAT Tools v{0}', steps.get-version.outputs.VERSION) || format('Prerelease {0}', github.sha) }}
           body: |
-            Automatic build from commit ${{ github.sha }}
+            ${{ steps.release-type.outputs.IS_TAG == 'true' && 'Stable release' || 'Automatic prerelease build' }}
+
+            - Commit: ${{ github.sha }}
             - Branch: ${{ github.ref_name }}
-            - Triggered by push
+            - Version: ${{ steps.get-version.outputs.VERSION }}
+            - Built on: ${{ github.event.head_commit.timestamp || github.event.created_at }}
+
+            See [CHANGELOG.md](CHANGELOG.md) for details.
           files: ${{ steps.package.outputs.vsix_file }}
-          generate_release_notes: false
+          generate_release_notes: true
           draft: false
-          prerelease: true
+          prerelease: ${{ steps.release-type.outputs.IS_TAG != 'true' }}
