@@ -3,7 +3,7 @@
     "displayName": "RVMAT Tools",
     "description": "Syntax highlighting, linting, autocompletion, texture validation and TexView integration for Arma 3 .rvmat material files",
     "publisher": "shemich-arma",
-    "version": "0.1.4",
+    "version": "0.1.5",
     "icon": "logo.png",
     "engines": {
         "vscode": "^1.108.1"
@@ -120,8 +120,8 @@
         "typescript-eslint": "^8.53.1"
     },
     "scripts": {
-    "compile": "tsc -p ./",
-    "vscode:prepublish": "npm run compile"
+        "compile": "tsc -p ./",
+        "vscode:prepublish": "npm run compile"
     },
     "license": "MIT"
 }
