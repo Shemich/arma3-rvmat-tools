@@ -18,15 +18,25 @@
 
 ## Installation
 
-1. Open VS Code → Extensions view (Ctrl+Shift+X)
-2. Search for **RVMAT Tools**
-3. Install
+### Manual install (.vsix file)
 
-Direct link:  
-https://open-vsx.org/extension/shemich-arma/rvmat-tools
+1. Download the latest `.vsix` file from one of these sources:
+   - [Open VSX page](https://open-vsx.org/extension/shemich-arma/rvmat-tools) → click **Download**
+   - [GitHub Releases](https://github.com/Shemich/arma3-rvmat-tools/releases) → latest release → Assets → `.vsix` file
 
-Alternative (manual install):  
-Download the latest .vsix from [GitHub Releases](https://github.com/Shemich/arma3-rvmat-tools/releases) → Extensions → … → Install from VSIX...
+2. In VS Code:
+   - Open the **Extensions** view (`Ctrl+Shift+X`)
+   - Click the `…` (More Actions) menu at the top
+   - Select **Install from VSIX…**
+   - Choose the downloaded `.vsix` file (e.g. `rvmat-tools-0.1.4.vsix`)
+   - Wait for installation to complete
+
+After installation:
+- Open any `.rvmat` file → syntax highlighting should work immediately
+- Right-click on a texture path → see **Open Texture with TexView** in the context menu
+- Use `Ctrl+Shift+P` → type **RVMAT** to see available commands
+
+Enjoy modding! 🚀
 
 ## Commands
 
