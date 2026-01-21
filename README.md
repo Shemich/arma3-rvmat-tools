@@ -52,7 +52,7 @@ Download the latest .vsix from [GitHub Releases](https://github.com/shemich/rvma
 ## Development / Contributing
 
 1. Clone the repo:  
-   `git clone https://github.com/shemich/rvmat-tools.git`
+   `git clone https://github.com/Shemich/arma3-rvmat-tools.git`
 2. Install dependencies: `npm install`
 3. Compile: `npm run compile`
 4. Press F5 → opens a new VS Code window with the extension loaded
